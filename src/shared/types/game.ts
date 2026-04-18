@@ -10,6 +10,7 @@ export type Phase =
 export interface Player {
   id: string;
   room_id: string;
+  user_id: string;
   name: string;
   avatar: string | null;
   is_host: boolean;
