@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #1a1a2e;
+  --paper: #e8dcc8;
+  --ink: #1a1a2e;
+  --cream: #f5efe0;
+  --green: #4ade80;
+  --yellow: #fbbf24;
+  --red: #f87171;
+  --blue: #60a5fa;
+  --background: var(--bg);
+  --foreground: var(--paper);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "VT323", monospace;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at top, rgba(96, 165, 250, 0.16), transparent 28%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.015) 3px,
+      rgba(255, 255, 255, 0.015) 4px
+    );
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='0' y='0' width='4' height='4' fill='%23e8dcc8'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23e8dcc8'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23e8dcc8'/%3E%3C/svg%3E")
+      0 0,
+    auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.screen {
+  animation: fadeIn 0.15s steps(3) both;
+}
+
+.pixel-label {
+  font-family: var(--font-display), "Press Start 2P", monospace;
+  font-size: 10px;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.pbox {
+  position: relative;
+  border: 4px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 1.25rem;
+  image-rendering: pixelated;
+}
+
+.pbox::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.pbox-accent {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 4px 4px 0 var(--green);
+}
+
+.pbtn {
+  font-family: var(--font-display), "Press Start 2P", monospace;
+  font-size: 9px;
+  line-height: 1.8;
+  padding: 0.9rem 1rem;
+  border: 4px solid var(--green);
+  background: var(--ink);
+  color: var(--green);
+  box-shadow: 4px 4px 0 var(--green);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pbtn:hover:not(:disabled) {
+  background: var(--green);
+  color: var(--ink);
+}
+
+.pbtn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.pbtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pbtn-secondary {
+  border-color: var(--yellow);
+  color: var(--yellow);
+  box-shadow: 4px 4px 0 var(--yellow);
+}
+
+.pbtn-secondary:hover:not(:disabled) {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.pinput {
+  min-height: 52px;
+  border: 4px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.15);
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-body), "VT323", monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.pinput:focus {
+  outline: none;
+  box-shadow:
+    inset 2px 2px 0 rgba(0, 0, 0, 0.15),
+    0 0 0 4px var(--green);
+}
+
+.pinput::placeholder {
+  color: color-mix(in srgb, var(--ink) 58%, transparent);
+}
+
+.progress-block {
+  width: 22px;
+  height: 14px;
+  border: 3px solid var(--ink);
+  background: rgba(26, 26, 46, 0.08);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.progress-block-active {
+  background: var(--green);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
